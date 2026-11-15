@@ -323,5 +323,5 @@ if(!customElements.get("rhi-notifications-card"))customElements.define("rhi-noti
 
 if(typeof window!=="undefined"){
  window.customCards=window.customCards||[];
- if(!window.customCards.some(card=>card.type==="rhi-notifications-card"))window.customCards.push({type:"rhi-notifications-card",name:"RHI Notifications",description:"RHI Notifications dashboard",preview:false});
+ if(!window.customCards.some(card=>card.type==="rhi-notifications-card"))window.customCards.push({type:"rhi-notifications-card",name:"Robotix Notifications",description:"RHI Notifications dashboard",preview:false});
 }
