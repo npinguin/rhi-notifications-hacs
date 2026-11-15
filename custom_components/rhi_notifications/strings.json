@@ -1,0 +1,109 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up RHI Notifications",
+        "description": "Install the inbox pilot. Existing notifications are not migrated or sent automatically."
+      }
+    },
+    "abort": {
+      "already_configured": "RHI Notifications is already installed."
+    }
+  },
+  "services": {
+    "configure_pilot": {
+      "name": "Configure pilot",
+      "description": "Explicitly configure test origins and rules. No external channels.",
+      "fields": {
+        "expected_revision": {
+          "name": "expected revision",
+          "description": "Explicit pilot expected revision"
+        },
+        "origins": {
+          "name": "origins",
+          "description": "Explicit pilot origins"
+        },
+        "rules": {
+          "name": "rules",
+          "description": "Explicit pilot rules"
+        }
+      }
+    },
+    "record_observation": {
+      "name": "Record observation",
+      "description": "Evaluate a qualified test observation and persist its inbox incident.",
+      "fields": {
+        "observation": {
+          "name": "observation",
+          "description": "Explicit pilot observation"
+        }
+      }
+    },
+    "acknowledge": {
+      "name": "Acknowledge incident",
+      "description": "Acknowledge without resolving the physical incident.",
+      "fields": {
+        "identity": {
+          "name": "identity",
+          "description": "Explicit pilot identity"
+        }
+      }
+    },
+    "get_inbox": {
+      "name": "Get inbox",
+      "description": "Read persisted pilot inbox and rule configuration."
+    },
+    "get_incidents": {
+      "name": "Read incident history",
+      "description": "Read incident history",
+      "fields": {
+        "view": {
+          "name": "view",
+          "description": "Explicit view"
+        },
+        "limit": {
+          "name": "limit",
+          "description": "Explicit limit"
+        }
+      }
+    },
+    "get_rules": {
+      "name": "Read current rules",
+      "description": "Read current rules",
+      "fields": {}
+    },
+    "set_rule": {
+      "name": "Edit notification rule",
+      "description": "Edit notification rule",
+      "fields": {
+        "expected_revision": {
+          "name": "expected revision",
+          "description": "Explicit expected revision"
+        },
+        "rule_id": {
+          "name": "rule id",
+          "description": "Explicit rule id"
+        },
+        "enabled": {
+          "name": "enabled",
+          "description": "Explicit enabled"
+        },
+        "severity": {
+          "name": "severity",
+          "description": "Explicit severity"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Notifications dashboard card",
+        "description": "Optional inbox card; incident tracking continues when disabled.",
+        "data": {
+          "enable_ux": "Enable bundled dashboard card"
+        }
+      }
+    }
+  }
+}

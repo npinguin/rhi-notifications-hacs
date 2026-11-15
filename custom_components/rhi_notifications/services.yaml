@@ -1,0 +1,154 @@
+configure_pilot:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        object: {}
+    origins:
+      required: true
+      selector:
+        object: {}
+    rules:
+      required: true
+      selector:
+        object: {}
+record_observation:
+  fields:
+    observation:
+      required: true
+      selector:
+        object: {}
+acknowledge:
+  fields:
+    identity:
+      required: true
+      selector:
+        object: {}
+get_inbox: {}
+
+get_incidents:
+  fields:
+    view:
+      required: true
+      selector:
+        select:
+          options: [active, history]
+    limit:
+      selector:
+        number:
+          min: 1
+          max: 200
+          mode: box
+get_rules: {}
+set_rule:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box
+    rule_id:
+      required: true
+      selector:
+        text: {}
+    enabled:
+      required: true
+      selector:
+        boolean: {}
+    severity:
+      required: true
+      selector:
+        select:
+          options: [L1, L2, L3, L4]
+    endpoints:
+      selector:
+        object: {}
+
+create_rule:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box
+    owner:
+      required: true
+      selector:
+        text: {}
+    asset_id:
+      required: true
+      selector:
+        text: {}
+    event_id:
+      required: true
+      selector:
+        text: {}
+    severity:
+      required: true
+      selector:
+        select:
+          options: [L1, L2, L3, L4]
+delete_rule:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box
+    rule_id:
+      required: true
+      selector:
+        text: {}
+
+create_native_rule:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box
+    registry_id:
+      required: true
+      selector:
+        text: {}
+    active_state:
+      required: true
+      selector:
+        select:
+          options: ['on', 'off']
+    severity:
+      required: true
+      selector:
+        select:
+          options: [L1, L2, L3, L4]
+
+set_endpoint_enabled:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box
+    endpoint_id:
+      required: true
+      selector:
+        text: {}
+    enabled:
+      required: true
+      selector:
+        boolean: {}
+retry_delivery:
+  fields:
+    identity:
+      required: true
+      selector:
+        object: {}
+    endpoint_id:
+      required: true
+      selector:
+        text: {}
