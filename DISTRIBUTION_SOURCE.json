@@ -1,9 +1,9 @@
 {
   "status": "PROTECTED_TEST_CANDIDATE",
-  "source_commit": "1f018d5ebb9b211b50223614b07027e688f82220",
-  "source_zip_sha256": "082b5d75c01dcc5abb81cbd67d2ceef3f8c40f8b8e01fbd435efd8b7bddeda09",
-  "protected_zip_sha256": "c3266e20f12a7337db02a477c9c619c3bc2b52dc19e27f716a978b14ca44b3a5",
-  "manifest_version": "0.1.0",
+  "source_commit": "45e94c360b42679ee015199b26097fc9616ab26a",
+  "source_zip_sha256": "a0459f17a973a5bfb5873951a16fcc3587a4f2c40532b79cfffbab26f1a6e223",
+  "protected_zip_sha256": "df8f130455f505bd0169e2333e61bb79b0ab34c6c3c396794719deb4437f85a1",
+  "manifest_version": "0.1.1",
   "platforms": {
     "aarch64": {
       "ha_image": "ghcr.io/home-assistant/home-assistant@sha256:6785d1eca68747a524c156faae1b139ed415c07357386ae6fe17291986e59e82",
@@ -11,7 +11,7 @@
       "extension_suffix": ".cpython-314-aarch64-linux-musl.so",
       "cython": "3.2.9",
       "compiler": "cc (Alpine 15.2.0) 15.2.0",
-      "protected_zip_sha256": "56438dc42869d5f25fdd954bfe27902100be9ca1dc5e2ff90e5076fa8e9d5a6a"
+      "protected_zip_sha256": "96e4e019c2b1632217bd0b4fb188a5e55961c6e60941a83b5223ba5bbcb9af5e"
     },
     "x86_64": {
       "ha_image": "ghcr.io/home-assistant/home-assistant@sha256:6785d1eca68747a524c156faae1b139ed415c07357386ae6fe17291986e59e82",
@@ -19,7 +19,7 @@
       "extension_suffix": ".cpython-314-x86_64-linux-musl.so",
       "cython": "3.2.9",
       "compiler": "cc (Alpine 15.2.0) 15.2.0",
-      "protected_zip_sha256": "1f61a568c0692fe12900151c44cef436bebb5c5d0ee626cb56426aef869bd598"
+      "protected_zip_sha256": "197fe39365db56a9ced0b430133d476a872894937f62eb683e231e92b3c5a44a"
     }
   },
   "protected_modules": [
@@ -37,25 +37,25 @@
   "runtime_files": {
     "DISTRIBUTION_NOTICE.md": "e48180eb8189aa6c4cad08fdf43be33a7b40c4005640d536ecc772ecf2ddc565",
     "GPL-3.0-only.txt": "fb981668c18a279e285fc4d83fba1e836cc84dd4daa73c9697d3cfd2d8aca6e0",
-    "__init__.py": "386705c025fd632a44976fd0fe4fc13d612eab320caca453194b43195d531def",
+    "__init__.py": "8932f1e54ba36d02a3424279e00daf852c70b0e01880793b946c093ecde513a2",
     "assets/robotix_home_assistant_logo.png": "20df6bc79a72407dac2feaea43a96381eeb0c93005e3e75bd2a9877d05239261",
     "brand/icon.png": "960321934daedcd75e08e7146d4f983dae0081e910d00750793053205a43d3ba",
     "brand/icon@2x.png": "20df6bc79a72407dac2feaea43a96381eeb0c93005e3e75bd2a9877d05239261",
     "brand/logo.png": "d9bded56e39e44bdf9cc06ba6db92d1ac16e3e497a95071e6672034f4e1884ee",
     "brand/logo@2x.png": "0b6af551f2939c13d18eb9ef763c0dbed5e75c0956da8548d9b17315e44a568c",
-    "config_flow.py": "bce9791d497c6fb02462bb6ed26df652d671572220090b6094982dd7151ca83e",
+    "config_flow.py": "42d1ec6d1c5785473c5afbd8785bad2a114730c556e84973a964924ad320952a",
     "diagnostics.py": "ade4cd1a51d0b53eab7b5cc5746f97c4ea15411102b1576651f32da9d4d24258",
-    "frontend.py": "17960ee9f969a55f88491290fdb04503c1efbea4bab7cad2d20540f4ea52a498",
+    "frontend.py": "bc58d712a99520a16779f4d8bf86fe147de309e6ab3ff019f469d33d13aaab6b",
     "frontend/GPL-3.0-only.txt": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
     "frontend/NOTICE.md": "5e9242cb868d4546dc7edfa9c2d672274fd0c45f8de06c39bfb76476de6821a1",
-    "frontend/notifications-card.js": "db887adc059201ad55ab9e43da8dc82efe9b6723b8321cb7405b9c393793ce1b",
+    "frontend/notifications-card.js": "75cfd4c1fd20e5971afe0886a5c699949333ba318f12972884c252c9eea59bc6",
     "ha_runtime.cpython-314-aarch64-linux-musl.so": "a351d52c617f431c3cd23253cdab07038d44d3b75e119212e01ed51ed03790d9",
     "ha_runtime.cpython-314-x86_64-linux-musl.so": "9d639ac360152cbe17e4b58c3cd23fa4ac1a08f4dd25cc2e553bf27089734383",
     "icon.png": "8925e28f6d3e2eafde22a14896e58ec292bfddd1ae58d881a6b4de1ac1c30bc2",
     "incidents.cpython-314-aarch64-linux-musl.so": "e7db47c1ed5e21401372c4599a1c373acbd998767d3546c0b7518d6128871ff2",
     "incidents.cpython-314-x86_64-linux-musl.so": "4bd425ec9e16a973d5588a9390cc14a7cd44d1889b8caf9577be3ec0b8ff095f",
     "logo.png": "960321934daedcd75e08e7146d4f983dae0081e910d00750793053205a43d3ba",
-    "manifest.json": "587403eea266dbf0db49c7b4853ebd762d208374da6339a01ad21b58fcfcc974",
+    "manifest.json": "f8f10fe5fa73e756d45be3dcf93ee16e3f5a07d5fd1729e4804c19fd32658baa",
     "model.cpython-314-aarch64-linux-musl.so": "f7751a315e36efa8b4f2cdde895767bba6e25aa80e993fb845f38926ab2cfff0",
     "model.cpython-314-x86_64-linux-musl.so": "6461a76cdf4a53d9e3d552d607d6c45bed0b913ad86e784cec849b51682a27f0",
     "sensor.py": "8d6c1e4e286624d8fc22fa71290ad5eeb08e6baeea562c1c15128d1a2473d51f",

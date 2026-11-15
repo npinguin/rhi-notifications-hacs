@@ -4,6 +4,7 @@ const NOTIFY_URL=import.meta.url;
 const NOTIFY_CSS=".notify-list{display:grid;gap:var(--rhi-space-3)}.notify-rule{display:flex;flex-wrap:wrap;gap:var(--rhi-space-3);align-items:center}.notify-rule select{font:inherit;min-height:var(--rhi-control-h);color:var(--rhi-color-text);background:var(--rhi-color-surface);border:1px solid var(--rhi-color-line);border-radius:var(--rhi-radius-sm)}";
 const ne=rhiUxEscape;
 class NotificationsCard extends HTMLElement{
+ static getStubConfig(){return {type:"custom:rhi-notifications-card"};}
  constructor(){super();this.attachShadow({mode:"open"});this.page="inbox";this.seq=0;this.started=false;this.data=null;this.busy=false;}
  setConfig(config){this.config=config||{};this.seq++;this.started=false;this.start();}
  set hass(hass){if(this.h?.user?.id!==hass?.user?.id){this.seq++;this.started=false;this.data=null;this.busy=false;this.feedback=null;}this.h=hass;this.start();}
@@ -36,3 +37,8 @@ class NotificationsCard extends HTMLElement{
  async write(service,data,verify,response=true,onResult=()=>{}){if(this.busy||!this.h?.user?.is_admin)return;const seq=++this.seq;this.busy=true;this.feedback=null;this.render();try{const available=await fetch(NOTIFY_URL,{method:"HEAD",cache:"no-store",credentials:"same-origin"});if(seq!==this.seq)return;if(!available.ok)throw Error("disabled");const result=await this.api(service,data,response);if(seq!==this.seq)return;onResult(result);const fresh=await this.read(seq);if(!fresh)return;this.data=fresh;if(!verify(fresh))throw Error("unverified");this.feedback="saved";}catch{if(seq===this.seq){this.data=null;this.feedback="failed";}}finally{if(seq===this.seq){this.busy=false;this.render();}}}
 }
 if(!customElements.get("rhi-notifications-card"))customElements.define("rhi-notifications-card",NotificationsCard);
+
+if(typeof window!=="undefined"){
+ window.customCards=window.customCards||[];
+ if(!window.customCards.some(card=>card.type==="rhi-notifications-card"))window.customCards.push({type:"rhi-notifications-card",name:"RHI Notifications",description:"RHI Notifications dashboard",preview:false});
+}
