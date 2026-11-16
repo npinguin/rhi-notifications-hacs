@@ -24,6 +24,13 @@ acknowledge:
       required: true
       selector:
         object: {}
+    scope_owner:
+      selector:
+        text: {}
+    scope_asset_ids:
+      selector:
+        object: {}
+
 get_inbox: {}
 
 get_incidents:
@@ -39,7 +46,43 @@ get_incidents:
           min: 1
           max: 200
           mode: box
-get_rules: {}
+    owner:
+      selector:
+        text: {}
+    asset_ids:
+      selector:
+        object: {}
+get_events:
+  fields:
+    hours:
+      selector:
+        number:
+          min: 1
+          max: 24
+          mode: box
+    limit:
+      selector:
+        number:
+          min: 1
+          max: 200
+          mode: box
+    owner:
+      selector:
+        text: {}
+    asset_ids:
+      selector:
+        object: {}
+get_rules:
+  fields:
+    owner:
+      selector:
+        text: {}
+    asset_ids:
+      selector:
+        object: {}
+    destination_endpoint_id:
+      selector:
+        text: {}
 set_rule:
   fields:
     expected_revision:
@@ -64,6 +107,52 @@ set_rule:
     endpoints:
       selector:
         object: {}
+    asset_ids:
+      selector:
+        object: {}
+    exclude:
+      selector:
+        object: {}
+    delay_seconds:
+      selector:
+        number:
+          min: 0
+          max: 86400
+          step: 1
+          mode: box
+          unit_of_measurement: s
+    cooldown_seconds:
+      selector:
+        number:
+          min: 0
+          max: 86400
+          step: 1
+          mode: box
+          unit_of_measurement: s
+    destination_endpoint_id:
+      selector:
+        text: {}
+    destination_selected:
+      selector:
+        boolean: {}
+    scope_owner:
+      selector:
+        text: {}
+    scope_asset_ids:
+      selector:
+        object: {}
+    inherit_endpoints:
+      selector:
+        boolean: {}
+    activation:
+      selector:
+        object: {}
+    group_selection:
+      selector:
+        object: {}
+    message_context:
+      selector:
+        object: {}
 
 create_rule:
   fields:
@@ -78,18 +167,52 @@ create_rule:
       selector:
         text: {}
     asset_id:
-      required: true
       selector:
         text: {}
+    asset_ids:
+      selector:
+        object: {}
     event_id:
       required: true
       selector:
         text: {}
+    all_assets:
+      selector:
+        boolean: {}
+    event_kind:
+      selector:
+        select:
+          options: [pulse, incident]
+    exclude:
+      selector:
+        object: {}
     severity:
       required: true
       selector:
         select:
           options: [L1, L2, L3, L4]
+    destination_endpoint_id:
+      selector:
+        text: {}
+    scope_owner:
+      selector:
+        text: {}
+    scope_asset_ids:
+      selector:
+        object: {}
+    inherit_endpoints:
+      selector:
+        boolean: {}
+    group_filters:
+      selector:
+        object: {}
+    activation:
+      selector:
+        object: {}
+    message_context:
+      selector:
+        object: {}
+
 delete_rule:
   fields:
     expected_revision:
@@ -102,7 +225,30 @@ delete_rule:
       required: true
       selector:
         text: {}
+    scope_owner:
+      selector:
+        text: {}
+    scope_asset_ids:
+      selector:
+        object: {}
 
+register_native_origin:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box
+    registry_id:
+      required: true
+      selector:
+        text: {}
+    active_state:
+      required: true
+      selector:
+        select:
+          options: ["on", "off"]
 create_native_rule:
   fields:
     expected_revision:
@@ -152,3 +298,57 @@ retry_delivery:
       required: true
       selector:
         text: {}
+    scope_owner:
+      selector:
+        text: {}
+    scope_asset_ids:
+      selector:
+        object: {}
+
+set_default_endpoints:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box
+    endpoint_ids:
+      required: true
+      selector:
+        object: {}
+
+set_delivery_policy:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box
+    enabled:
+      selector:
+        boolean: {}
+    profile:
+      selector:
+        select:
+          options: [normal, quiet, away]
+    endpoint_id:
+      selector:
+        text: {}
+    preferences:
+      selector:
+        object: {}
+
+import_notification_snapshot:
+  fields:
+    snapshot:
+      required: true
+      selector:
+        object: {}
+    expected_fingerprint:
+      selector:
+        text: {}
+    confirm_source_stopped:
+      selector:
+        boolean: {}

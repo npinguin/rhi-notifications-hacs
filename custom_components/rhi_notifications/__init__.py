@@ -30,4 +30,7 @@ async def async_setup_entry(hass, entry):
 
 
 async def async_unload_entry(hass, entry):
-    return await hass.config_entries.async_unload_platforms(entry, ["sensor"])
+    if not await hass.config_entries.async_unload_platforms(entry, ["sensor"]):
+        return False
+    await entry.runtime_data.shutdown()
+    return True
