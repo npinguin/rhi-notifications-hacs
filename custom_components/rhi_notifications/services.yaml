@@ -46,6 +46,13 @@ get_incidents:
           min: 1
           max: 200
           mode: box
+    offset:
+      description: Zero-based row offset in the scoped live result.
+      selector:
+        number:
+          min: 0
+          max: 1000000
+          mode: box
     owner:
       selector:
         text: {}
@@ -65,6 +72,13 @@ get_events:
         number:
           min: 1
           max: 200
+          mode: box
+    offset:
+      description: Zero-based row offset in the scoped live result.
+      selector:
+        number:
+          min: 0
+          max: 1000000
           mode: box
     owner:
       selector:
@@ -147,6 +161,9 @@ set_rule:
     activation:
       selector:
         object: {}
+    inbox:
+      selector:
+        boolean: {}
     group_selection:
       selector:
         object: {}

@@ -22,7 +22,7 @@ RESOURCE = "/rhi_notifications/frontend/notifications-card.js"
 class NotificationsCardView(HomeAssistantView):
     url = RESOURCE
     name = "rhi_notifications:frontend:card"
-    # Static JavaScript only. All notification data still requires the admin HA action.
+    # Static JavaScript only. Data uses existing HA service authorization.
     requires_auth = False
 
     def __init__(self, hass, payload, version):
