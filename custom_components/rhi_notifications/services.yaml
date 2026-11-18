@@ -208,6 +208,9 @@ create_rule:
       selector:
         select:
           options: [L1, L2, L3, L4]
+    endpoints:
+      selector:
+        object: {}
     destination_endpoint_id:
       selector:
         text: {}
