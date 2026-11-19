@@ -372,3 +372,30 @@ import_notification_snapshot:
     confirm_source_stopped:
       selector:
         boolean: {}
+
+test_delivery:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box
+    endpoint_id:
+      required: true
+      selector:
+        text: {}
+    severity:
+      required: true
+      selector:
+        select:
+          options: [L1, L2, L3, L4]
+
+test_inbox:
+  fields:
+    expected_revision:
+      required: true
+      selector:
+        number:
+          min: 0
+          mode: box

@@ -93,6 +93,34 @@
           "description": "Explicit severity"
         }
       }
+    },
+    "test_delivery": {
+      "name": "Test notification delivery",
+      "description": "Explicitly test one authorized destination. A submission does not prove receipt.",
+      "fields": {
+        "expected_revision": {
+          "name": "Configuration revision",
+          "description": "Current delivery settings revision."
+        },
+        "endpoint_id": {
+          "name": "Destination",
+          "description": "One qualified notification endpoint."
+        },
+        "severity": {
+          "name": "Priority",
+          "description": "Priority used by the current delivery policy."
+        }
+      }
+    },
+    "test_inbox": {
+      "name": "Test notification inbox",
+      "description": "Record one explicit inbox test message without creating an incident or external delivery.",
+      "fields": {
+        "expected_revision": {
+          "name": "Configuration revision",
+          "description": "Current delivery settings revision."
+        }
+      }
     }
   },
   "options": {
