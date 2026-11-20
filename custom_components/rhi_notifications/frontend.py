@@ -17,6 +17,7 @@ OPTION = "enable_ux"
 UX_OPTION = OPTION
 _LOGGER = logging.getLogger(__name__)
 RESOURCE = "/rhi_notifications/frontend/notifications-card.js"
+HERO_RESOURCE = "/rhi_notifications/frontend/notifications-hero.webp"
 
 
 class NotificationsCardView(HomeAssistantView):
@@ -24,6 +25,7 @@ class NotificationsCardView(HomeAssistantView):
     name = "rhi_notifications:frontend:card"
     # Static JavaScript only. Data uses existing HA service authorization.
     requires_auth = False
+    content_type = "text/javascript"
 
     def __init__(self, hass, payload, version):
         self.hass = hass
@@ -38,11 +40,18 @@ class NotificationsCardView(HomeAssistantView):
     async def get(self, request):
         if not self._enabled():
             return web.Response(status=404, headers=self.headers)
-        return web.Response(body=self.payload, content_type="text/javascript", headers=self.headers)
+        return web.Response(body=self.payload, content_type=self.content_type, headers=self.headers)
 
     async def head(self, request):
         return web.Response(status=200 if self._enabled() else 404,
-                            content_type="text/javascript", headers=self.headers)
+                            content_type=self.content_type, headers=self.headers)
+
+
+class NotificationsHeroView(NotificationsCardView):
+    """Serve locally bundled artwork with the same optional UX lifecycle."""
+    url = HERO_RESOURCE
+    name = "rhi_notifications:frontend:hero"
+    content_type = "image/webp"
 
 
 async def async_register_frontend(hass):
@@ -53,11 +62,13 @@ async def async_register_frontend(hass):
     def load():
         root = Path(__file__).parent
         return ((root / "frontend" / "notifications-card.js").read_bytes(),
+                (root / "frontend" / "notifications-hero.webp").read_bytes(),
                 json.loads((root / "manifest.json").read_text())["version"])
 
-    payload, version = await hass.async_add_executor_job(load)
-    hass.data[f"{DOMAIN}_ux_transport"] = {"version": version, "verified": bool(payload), "file_count": 1}
+    payload, hero, version = await hass.async_add_executor_job(load)
+    hass.data[f"{DOMAIN}_ux_transport"] = {"version": version, "verified": bool(payload and hero), "file_count": 2}
     hass.http.register_view(NotificationsCardView(hass, payload, version))
+    hass.http.register_view(NotificationsHeroView(hass, hero, version))
 
 
 def ux_diagnostics(hass, entry):

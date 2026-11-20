@@ -1,1 +1,2 @@
-Private engineering UX candidate. Includes pinned RHI UX Core 1.6.4 under GPL-3.0-only; original license retained. Public release requires frontend source/licensing review and protected backend separation. No new license grant to domain-owned code.
+Private engineering UX candidate. Includes pinned RHI UX Core 1.6.6 under GPL-3.0-only; original license retained. Public release requires frontend source/licensing review and protected backend separation. No new license grant to domain-owned code.
+Original owner-controlled, AI-assisted `notifications-hero.webp` is bundled with the optional UX and served locally; no external image provider is required.
